@@ -4,13 +4,14 @@
  */
 package My_forms;
 
+import My_classes.Func_Class;
 import java.awt.Color;
 import java.awt.Component;
-import java.awt.Image;
+
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.BorderFactory;
-import javax.swing.ImageIcon;
+
 import javax.swing.JButton;
 import javax.swing.border.Border;
 
@@ -24,7 +25,7 @@ public class DashboardForm extends javax.swing.JFrame {
     //the button border
     Border buttonBorder1= BorderFactory.createMatteBorder(1, 1, 1, 1, Color.yellow);
     Border buttonBorder0= BorderFactory.createMatteBorder(1, 1, 1, 1, new Color(36,37,42));
-
+    My_classes.Func_Class func = new Func_Class();
     /**
      * Creates new form DashboardForm
      */
@@ -32,7 +33,8 @@ public class DashboardForm extends javax.swing.JFrame {
         initComponents();
         
         this.setLocationRelativeTo(null);
-        displayImage();
+        //display image in dashboard left side
+        func.displayImage(jLabel_Dashboard_logo.getWidth(), jLabel_Dashboard_logo.getHeight(), "/My_images/logo2.png", jLabel_Dashboard_logo);
         
         Border panelHeader_1_Border= BorderFactory.createMatteBorder(0, 0, 3, 0,new Color(235,125,22));
         jPanel_header1.setBorder(panelHeader_1_Border);
@@ -43,24 +45,12 @@ public class DashboardForm extends javax.swing.JFrame {
         Border panelHeader_3_Border= BorderFactory.createMatteBorder(0, 0, 3, 0,new Color(115,40,125));
         jPanel_header3.setBorder(panelHeader_3_Border);
         
-        //adding more borders
-        
-        
-    }
-    
-    
-    //function to display the image in jlabel
-    public void displayImage()
-    {
-        ImageIcon imgIco=new ImageIcon(getClass().getResource("/My_images/logo2.png"));
-        Image image=imgIco.getImage().getScaledInstance(jLabel_Dashboard_logo.getWidth(), jLabel_Dashboard_logo.getHeight(), Image.SCALE_SMOOTH );
-        jLabel_Dashboard_logo.setIcon(new ImageIcon(image));
-        
         //add borders to buttons
         addBorders();
         //the hover effect
         buttonsHoverEffect();
     }
+    
     
     //function to add borders to all buttons
     public void addBorders()
@@ -154,8 +144,6 @@ public class DashboardForm extends javax.swing.JFrame {
         jPanel_Menu.setBackground(new java.awt.Color(36, 37, 42));
 
         jPanel_Header.setBackground(new java.awt.Color(1, 50, 67));
-
-        jLabel_Dashboard_logo.setText("jLabel1");
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
@@ -362,7 +350,7 @@ public class DashboardForm extends javax.swing.JFrame {
             .addGroup(jPanel_header3Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel4)
-                .addContainerGap(341, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel_header3Layout.setVerticalGroup(
             jPanel_header3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -385,7 +373,7 @@ public class DashboardForm extends javax.swing.JFrame {
             .addGroup(jPanel_3Layout.createSequentialGroup()
                 .addGap(34, 34, 34)
                 .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 365, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(39, Short.MAX_VALUE))
         );
         jPanel_3Layout.setVerticalGroup(
             jPanel_3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -405,7 +393,7 @@ public class DashboardForm extends javax.swing.JFrame {
                 .addComponent(jPanel_Menu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jPanel_1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 67, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
                 .addComponent(jPanel_2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(51, 51, 51)
                 .addComponent(jPanel_3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -424,7 +412,7 @@ public class DashboardForm extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jPanel_Menu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(12, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -433,12 +421,11 @@ public class DashboardForm extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();

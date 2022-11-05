@@ -5,6 +5,7 @@
 package My_forms;
 
 import My_classes.DB;
+import My_classes.Func_Class;
 import java.awt.Image;
 import javax.swing.ImageIcon;
 import java.sql.*;
@@ -21,12 +22,15 @@ public class LoginForm extends javax.swing.JFrame {
     /**
      * Creates new form LoginForm
      */
+    
     public LoginForm() {
         initComponents();
         
         //center the form
         this.setLocationRelativeTo(null);
-        displayImage();
+        My_classes.Func_Class func = new Func_Class();
+        func.displayImage(jLabel_Logo.getWidth(), jLabel_Logo.getHeight(), "/My_images/logo2.png", jLabel_Logo);
+        
     }
     
     //function to display the image in jlabel
