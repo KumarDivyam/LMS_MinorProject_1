@@ -4,9 +4,11 @@
  */
 package My_classes;
 
+
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Date;
+import java.sql.ResultSet;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -17,6 +19,8 @@ import javax.swing.JOptionPane;
  */
 public class Book {
     
+   private Integer id; 
+
    private String isbn;
    private  String name;
    private  Integer author_id;
@@ -29,9 +33,10 @@ public class Book {
    private byte[] cover;
 
 public Book() {}
-public Book(String _isbn,String _name,Integer _author_id,Integer _genre_id,Integer _quantity,String _publisher,double _price 
+public Book(Integer _id,String _isbn,String _name,Integer _author_id,Integer _genre_id,Integer _quantity,String _publisher,double _price 
         ,String _date_received ,String _description, byte[] _cover)
 {
+    this.id = _id;
     this.isbn = _isbn;
     this.name = _name;
     this.author_id = _author_id;
@@ -43,6 +48,11 @@ public Book(String _isbn,String _name,Integer _author_id,Integer _genre_id,Integ
     this.description = _description;
     this.cover = _cover;
 }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+    
 
     public void setIsbn(String isbn) {
         this.isbn = isbn;
@@ -83,7 +93,9 @@ public Book(String _isbn,String _name,Integer _author_id,Integer _genre_id,Integ
     public void setCover(byte[] cover) {
         this.cover = cover;
     }
-
+        public Integer getId() {
+        return id;
+    }
     public String getIsbn() {
         return isbn;
     }
@@ -128,7 +140,7 @@ public Book(String _isbn,String _name,Integer _author_id,Integer _genre_id,Integ
    public void addBook(String _isbn,String _name,Integer _author_id,Integer _genre_id,Integer _quantity,String _publisher,double _price 
         ,String _date_received ,String _description, byte[] _cover)
     {   
-        String insertQuery = "INSERT INTO `book`(`isbn`, `name`, `author_id`, `genre_id`,'quantity', `publisher`, `price`, `date_recevied`, `description`, `cover`) VALUES (?,?,?,?,?,?,?,?,?,?)";
+        String insertQuery = "INSERT INTO `books`(`isbn`, `name`, `author_id`, `genre_id`, `quantity`, `publisher`, `price`, `date_recevied`, `description`, `cover`) VALUES (?,?,?,?,?,?,?,?,?,?)";
         
         try {
             PreparedStatement ps = DB.getConnection().prepareStatement(insertQuery);
@@ -139,7 +151,7 @@ public Book(String _isbn,String _name,Integer _author_id,Integer _genre_id,Integ
             ps.setInt(4,_genre_id);
             ps.setInt(5,_quantity);
             ps.setString(6,_publisher);
-            ps.setDouble(6, _price);
+            ps.setDouble(7, _price);
             ps.setString(8,  _date_received);
             ps.setString(9,_description);
             ps.setBytes(10 , _cover);
@@ -159,4 +171,23 @@ public Book(String _isbn,String _name,Integer _author_id,Integer _genre_id,Integ
        
     }
     
+   public boolean isISBNexists(String _isbn)
+   {
+       String query = "SELECT * FROM `books` WHERE `isbn` = '"+_isbn+"'";
+       Func_Class func = new Func_Class();
+       ResultSet rs = func.getData(query);
+       try {
+           if (rs.next()) {
+               return true;
+           }
+           else {
+               return false;
+           }
+       } catch (SQLException ex) {
+           Logger.getLogger(Book.class.getName()).log(Level.SEVERE, null, ex);
+       }
+       
+       return true;
+   }
+   
 }
