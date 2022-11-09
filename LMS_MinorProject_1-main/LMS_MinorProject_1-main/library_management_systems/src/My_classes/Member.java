@@ -150,7 +150,7 @@ public class Member {
        
  public void removeMember(int _id)
     {   
-        String editQuery = "DELETE FROM `author` WHERE `id` = ?";
+        String editQuery = "DELETE FROM `members` WHERE `id` = ?";
         
         try {
             PreparedStatement ps = DB.getConnection().prepareStatement(editQuery);
@@ -172,6 +172,58 @@ public class Member {
         }
     
 }
+ 
+ public Member getMemberById(Integer _id) throws SQLException
+ {
+     Func_Class func= new Func_Class();
+     String query="SELECT * FROM `members` WHERE `id`= "+_id;
+      ResultSet rs=func.getData(query);
+      if(rs.next())
+      {
+          
+          return new Member(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getBytes(7));
+          
+      }
+      else
+      {
+           
+          return null;
+          
+      }
+      
+ }
+ 
+         public ArrayList<Member> membersList(String query)
+        {
+            ArrayList<Member> mList= new ArrayList<>();
+            
+
+            My_classes.Func_Class func= new Func_Class();
+            
+            try {
+             
+                if (query.equals(""))
+                        {
+                             query = "SELECT * FROM `members`";
+                        } 
+                ResultSet rs=func.getData(query);
+                Member member;
+           
+             
+             while(rs.next())
+             {
+                 member = new Member(rs.getInt("id"),rs.getString("firstname"),rs.getString("lastName"), rs.getString("phone"),rs.getString("email"),rs.getString("gender"),rs.getBytes("picture"));
+                 mList.add(member);
+             }
+          
+           
+        }
+            catch (SQLException ex) {
+            Logger.getLogger(Member.class.getName()).log(Level.SEVERE, null, ex);
+        }
+            return mList;
+            
+        }
 
  
  

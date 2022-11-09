@@ -4,27 +4,70 @@ package My_classes;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Image;
+import java.io.File;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import java.sql.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JFileChooser;
 import javax.swing.JTable;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 /**
  *
  * @author Divyam
  */
 public class Func_Class {
-     public void displayImage(int width, int height , String ImagePath, JLabel label)
+     public void displayImage(int width, int height ,byte[] imagebyte, String ImagePath, JLabel label)
     {
-        ImageIcon imgIco=new ImageIcon(getClass().getResource(ImagePath));
+        //get the image
+        ImageIcon imgIco;
+        
+        if(imagebyte!=null)//get image using bytes
+        {
+            imgIco=new ImageIcon(imagebyte);
+        }
+        else// get image using path
+        {
+            try
+            {
+                 imgIco=new ImageIcon(getClass().getResource(ImagePath));
+            }
+            
+           catch(Exception e)
+           {
+               imgIco=new ImageIcon(ImagePath);
+           }
+            
+        }
+        
         Image image=imgIco.getImage().getScaledInstance(width,height, Image.SCALE_SMOOTH );
         label.setIcon(new ImageIcon(image));
         
      
     }
-     
+     //function to select iamge
+     public String selectImage()
+     {  
+         String path = null;
+         JFileChooser fileChooser = new JFileChooser();
+        fileChooser.setDialogTitle("Select Profile Picture");
+        
+        fileChooser.setCurrentDirectory(new File("D\\Pics"));
+        
+        FileNameExtensionFilter extensionFilter = new FileNameExtensionFilter("Image",".png",".jpg",".jpeg");
+        fileChooser.addChoosableFileFilter(extensionFilter);
+        
+        int fileState = fileChooser.showSaveDialog(null);
+        
+        if (fileState == JFileChooser.APPROVE_OPTION)
+        {
+             path = fileChooser.getSelectedFile().getAbsolutePath();   
+        }
+        
+        return path;
+     }
      //function to customize jTable
      
      public void customTable(JTable table)
@@ -33,9 +76,9 @@ public class Func_Class {
         table.setSelectionForeground(Color.white);
         table.setRowHeight(30);
         table.setShowGrid(false);
-        table.setBackground(new Color(248,248,248));
+        table.setBackground(new Color(255,196,196));
         table.setShowHorizontalLines(true);
-        table.setGridColor(Color.gray);
+        table.setGridColor(new Color(205,103,255));
          
      }
      // function to customize the jlabel Header

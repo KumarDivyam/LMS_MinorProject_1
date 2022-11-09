@@ -32,6 +32,7 @@ public class AddMemberForm extends javax.swing.JFrame {
     
     //create a member object
     My_classes.Member member = new My_classes.Member();
+    My_classes.Func_Class func = new My_classes.Func_Class();
     //create a variable to store the profile pic path
     String imagePath = null;
     
@@ -44,7 +45,7 @@ public class AddMemberForm extends javax.swing.JFrame {
           Border panelHeader_1_Border= BorderFactory.createMatteBorder(3, 3, 3, 3, new Color(1,152,117));
         jPanel1.setBorder(panelHeader_1_Border);
         My_classes.Func_Class func = new Func_Class();
-        func.displayImage(90,60, "/My_images/members.png", jLabel_FormTitle1);
+        func.displayImage(90,60,null, "/My_images/members.png", jLabel_FormTitle1);
       
         //hide EmptyName
         jLabel_EmptyFirstName_.setVisible(false);
@@ -223,7 +224,7 @@ public class AddMemberForm extends javax.swing.JFrame {
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel_FormTitle1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel_CloseFormMouseClicked, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(jLabel_CloseFormMouseClicked, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jTextField_LastName)
                             .addComponent(jTextField_FirstName)
                             .addComponent(jTextField_Phone, javax.swing.GroupLayout.Alignment.LEADING)
@@ -243,7 +244,7 @@ public class AddMemberForm extends javax.swing.JFrame {
                                         .addComponent(jLabel_ImagePath)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(jButton_SelectProfilePicture)))
-                                .addGap(0, 116, Short.MAX_VALUE)))
+                                .addGap(0, 226, Short.MAX_VALUE)))
                         .addContainerGap())))
         );
         jPanel1Layout.setVerticalGroup(
@@ -304,7 +305,7 @@ public class AddMemberForm extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 599, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 632, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -315,7 +316,14 @@ public class AddMemberForm extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel_CloseFormMouseClickedMouseClicked
 
     private void jButton_AddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_AddActionPerformed
-       
+        //hide the empty name message
+        
+        jLabel_EmptyFirstName_.setVisible(false);
+        jLabel_EmptyLastName_.setVisible(false);
+        jLabel_EmptyPhone.setVisible(false);
+        
+        //get the member data
+        
         String fname = jTextField_FirstName.getText();
         String lname = jTextField_LastName.getText();
         String phone = jTextField_Phone.getText();
@@ -385,22 +393,12 @@ public class AddMemberForm extends javax.swing.JFrame {
 
     private void jButton_SelectProfilePictureActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_SelectProfilePictureActionPerformed
         // select picture from the computer
-        JFileChooser fileChooser = new JFileChooser();
-        fileChooser.setDialogTitle("Select Profile Picture");
         
-        fileChooser.setCurrentDirectory(new File("D\\Pics"));
         
-        FileNameExtensionFilter extensionFilter = new FileNameExtensionFilter("Image",".png",".jpg",".jpeg");
-        fileChooser.addChoosableFileFilter(extensionFilter);
-        
-        int fileState = fileChooser.showSaveDialog(null);
-        
-        if (fileState == JFileChooser.APPROVE_OPTION)
-        {
-            String path = fileChooser.getSelectedFile().getAbsolutePath();
+            String path = func.selectImage();
             jLabel_ImagePath.setText(path);
             imagePath=path;
-        }
+        
         
     }//GEN-LAST:event_jButton_SelectProfilePictureActionPerformed
 

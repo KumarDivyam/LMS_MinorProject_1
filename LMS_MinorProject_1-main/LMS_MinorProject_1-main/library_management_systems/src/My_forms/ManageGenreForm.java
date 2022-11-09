@@ -33,7 +33,7 @@ public class ManageGenreForm extends javax.swing.JFrame {
           Border panelHeader_1_Border= BorderFactory.createMatteBorder(3, 3, 3, 3, Color.gray);
         jPanel1.setBorder(panelHeader_1_Border);
         My_classes.Func_Class func = new Func_Class();
-        func.displayImage(75,60, "/My_images/logo2.png", jLabel_FormTitle);
+        func.displayImage(75,60,null, "/My_images/logo2.png", jLabel_FormTitle);
         
         //custom table 
         func.customTable(jTable_Genres_);

@@ -29,7 +29,7 @@ public class LoginForm extends javax.swing.JFrame {
         //center the form
         this.setLocationRelativeTo(null);
         My_classes.Func_Class func = new Func_Class();
-        func.displayImage(jLabel_Logo.getWidth(), jLabel_Logo.getHeight(), "/My_images/logo2.png", jLabel_Logo);
+        func.displayImage(jLabel_Logo.getWidth(), jLabel_Logo.getHeight(),null, "/My_images/logo2.png", jLabel_Logo);
         
     }
     

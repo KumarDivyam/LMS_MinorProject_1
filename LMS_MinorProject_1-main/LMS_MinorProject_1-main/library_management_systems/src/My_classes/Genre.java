@@ -10,6 +10,7 @@ package My_classes;
  */
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -44,6 +45,8 @@ public class Genre {
     }
     
     //functions 
+    My_classes.Func_Class func= new Func_Class();
+    
     
     public void addGenre(String _name)
     {   
@@ -132,7 +135,7 @@ public class Genre {
             ArrayList<Genre> gList= new ArrayList<>();
             
             
-             My_classes.Func_Class func= new Func_Class();
+             
             
             try {
             ResultSet rs=func.getData("SELECT * FROM `book_genres`");
@@ -143,14 +146,7 @@ public class Genre {
              {
                  genre= new Genre(rs.getInt("id"),rs.getString("name"));
                  gList.add(genre);
-             }
-             
-            
-            
-            
-            
-            
-           
+             }  
         }
             catch (SQLException ex) {
             Logger.getLogger(Genre.class.getName()).log(Level.SEVERE, null, ex);
@@ -159,5 +155,27 @@ public class Genre {
             
         }
     
-
+        //create  a function to return a hasmap
+        // string is the key and integer is the value
+        public HashMap<String, Integer> getGenresMap()
+        {
+            HashMap<String,Integer> map = new HashMap();
+            try {
+            ResultSet rs=func.getData("SELECT * FROM `book_genres`");
+            
+             Genre genre;
+             
+             while(rs.next())
+             {
+                 genre= new Genre(rs.getInt("id"),rs.getString("name"));
+                 map.put(genre.getName(), genre.getId());
+                 
+             }  
+        }
+            catch (SQLException ex) {
+            Logger.getLogger(Genre.class.getName()).log(Level.SEVERE, null, ex);
+            
+        }
+            return map;
+        }
 }
