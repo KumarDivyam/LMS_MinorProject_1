@@ -272,6 +272,6 @@ public class AuthorsListForm extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel_FormTitle1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    public static javax.swing.JTable jTable_Authors_;
+    public javax.swing.JTable jTable_Authors_;
     // End of variables declaration//GEN-END:variables
 }

@@ -6,6 +6,7 @@ package My_classes;
 
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.sql.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -124,23 +125,10 @@ public Book(String _isbn,String _name,Integer _author_id,Integer _genre_id,Integ
     }
 
      //insert new Book Function
-
-    /**
-     *
-     * @param _isbn
-     * @param _name
-     * @param _author_id
-     * @param _genre_id
-     * @param _quantity
-     * @param _publisher
-     * @param _price
-     * @param _date_received
-     * @param _description
-     * @param _cover
-     */
-   public void addBook(String _isbn,String _name,Integer _author_id,Integer _genre_id,Integer _quantity,String _publisher,double _price ,String _date_received ,String _description, byte[] _cover)
+   public void addBook(String _isbn,String _name,Integer _author_id,Integer _genre_id,Integer _quantity,String _publisher,double _price 
+        ,String _date_received ,String _description, byte[] _cover)
     {   
-        String insertQuery = "INSERT INTO `books`(`isbn`, `name`, `author_id`, `genre_id`, `quantity`, `publisher`, `price`, `date_received`, `description`, `cover`) VALUES (?,?,?,?,?,?,?,?,?,?)";
+        String insertQuery = "INSERT INTO `book`(`isbn`, `name`, `author_id`, `genre_id`,'quantity', `publisher`, `price`, `date_recevied`, `description`, `cover`) VALUES (?,?,?,?,?,?,?,?,?,?)";
         
         try {
             PreparedStatement ps = DB.getConnection().prepareStatement(insertQuery);
@@ -151,7 +139,7 @@ public Book(String _isbn,String _name,Integer _author_id,Integer _genre_id,Integ
             ps.setInt(4,_genre_id);
             ps.setInt(5,_quantity);
             ps.setString(6,_publisher);
-            ps.setDouble(7, _price);
+            ps.setDouble(6, _price);
             ps.setString(8,  _date_received);
             ps.setString(9,_description);
             ps.setBytes(10 , _cover);

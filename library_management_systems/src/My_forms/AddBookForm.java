@@ -4,14 +4,15 @@
  */
 package My_forms;
 
-
+import My_classes.Member;
+import java.util.Date;
 import java.awt.Color;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.text.SimpleDateFormat;
-
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -246,7 +247,6 @@ public class AddBookForm extends javax.swing.JFrame {
             }
         });
 
-        jComboBox_Genres.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "philosophy", "fiction", "non-fiction" }));
         jComboBox_Genres.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBox_GenresActionPerformed(evt);
@@ -472,34 +472,17 @@ public class AddBookForm extends javax.swing.JFrame {
            
             Double price = Double.parseDouble(jTextField_Price.getText());
             
-            byte[] img=null;
-            
-            
-            
-            if(imagePath!=null)
-            {
-            
         try{    
-            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+            SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-YYYY");
             String received_date = dateFormat.format(jDateChooser_Date.getDate());
             Path path = Paths.get(imagePath);
-            img=Files.readAllBytes(path);
-            if(img==null)
-            {
-                System.out.println("Null");
-            }
+            byte[] img=Files.readAllBytes(path);
             My_classes.Book book = new My_classes.Book();
             book.addBook(isbn, name, author_id, genre_id, quantity, publisher, price, received_date, description, img);
         
         } catch (IOException ex) {
             Logger.getLogger(AddBookForm.class.getName()).log(Level.SEVERE, null, ex);
         }
-            }
-            else
-            {
-                System.out.println("imgpth null!!");
-            }
-            
         
 
         
@@ -510,23 +493,20 @@ public class AddBookForm extends javax.swing.JFrame {
     }//GEN-LAST:event_jComboBox_GenresActionPerformed
 
     private void jButton_Select_ImageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_Select_ImageActionPerformed
-           
+           /*
             String path = func.selectImage();
-            path=path.trim();
             jLabel_ImagePath.setText(path);
-            imagePath = path;
+            String imagePath = path;
         
         //display the image
-        func.displayImage(190, 157, null, imagePath, jLabel_Image1);
-           
+        func.displayImage(190, 134, null, imagePath, jLabel_Image);
+          */  
             
     }//GEN-LAST:event_jButton_Select_ImageActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         AuthorsListForm authorsForm = new AuthorsListForm();
         authorsForm.setVisible(true);
-
-        
     }//GEN-LAST:event_jButton1ActionPerformed
     public static void displayAuthorData(int id,String fullName)
     {

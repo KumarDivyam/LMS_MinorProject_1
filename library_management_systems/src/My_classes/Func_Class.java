@@ -50,8 +50,7 @@ public class Func_Class {
      //function to select iamge
      public String selectImage()
      {  
-         String path = "";
-         String test= null;
+         String path = null;
          JFileChooser fileChooser = new JFileChooser();
         fileChooser.setDialogTitle("Select Profile Picture");
         
@@ -64,9 +63,7 @@ public class Func_Class {
         
         if (fileState == JFileChooser.APPROVE_OPTION)
         {
-             path = fileChooser.getSelectedFile().getAbsolutePath();  
-             
-             
+             path = fileChooser.getSelectedFile().getAbsolutePath();   
         }
         
         return path;
