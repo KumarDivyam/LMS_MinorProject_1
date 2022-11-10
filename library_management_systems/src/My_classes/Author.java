@@ -71,7 +71,7 @@ public class Author {
 
     
     //functions 
-    
+    My_classes.Func_Class func= new Func_Class();
     public void addAuthor(String _fname,String _lname,String _expertise,String _about)
     {   
         String insertQuery = "INSERT INTO `author`(`firstName`, `lastName`, `expertise`, `about`) VALUES (?, ?, ?, ?)";
@@ -161,7 +161,7 @@ public class Author {
             ArrayList<Author> aList= new ArrayList<>();
             
 
-            My_classes.Func_Class func= new Func_Class();
+            
             
             try {
              
@@ -183,6 +183,22 @@ public class Author {
             
         }
     
+    public Author getAuthorById(Integer id)
+    {
+        ResultSet rs=func.getData("SELECT * FROM `author` where id = "+id);
+            Author author = null;
+             
+        try {
+            while(rs.next())
+            {
+                author = new Author(rs.getInt("id"),rs.getString("firstname"),rs.getString("lastName"),rs.getString("expertise"),rs.getString("about"));
+                
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Author.class.getName()).log(Level.SEVERE, null, ex);
+        }
+             return author;
+    }
 
  
  

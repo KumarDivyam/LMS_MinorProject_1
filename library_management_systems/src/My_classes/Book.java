@@ -135,7 +135,7 @@ public Book(Integer _id,String _isbn,String _name,Integer _author_id,Integer _ge
     public byte[] getCover() {
         return cover;
     }
-
+    Func_Class func = new Func_Class();
      //insert new Book Function
    public void addBook(String _isbn,String _name,Integer _author_id,Integer _genre_id,Integer _quantity,String _publisher,double _price 
         ,String _date_received ,String _description, byte[] _cover)
@@ -170,11 +170,73 @@ public Book(Integer _id,String _isbn,String _name,Integer _author_id,Integer _ge
         }
        
     }
+   
+   public void editBook(int _id,String _name,Integer _author_id,Integer _genre_id,Integer _quantity,String _publisher,double _price 
+        ,String _date_received ,String _description, byte[] _cover)
+    {   
+        String upadteQuery = "";
+        PreparedStatement ps;
+        
+        try {
+        
+        if(cover!=null)
+        {
+            upadteQuery = "UPDATE `books` SET \n" +"`name`= ? ,`author_id`=? ,`genre_id`=? ,`quantity`= ?,`publisher`= ? ,`price`= ?,`date_recevied`=?,`description`=?,`cover`=? WHERE `id` = ?";
+            ps = DB.getConnection().prepareStatement(upadteQuery);
+            
+            //ps.setString(1,_isbn);
+            ps.setString(1,_name);
+            ps.setInt(2,_author_id);
+            ps.setInt(3,_genre_id);
+            ps.setInt(4,_quantity);
+            ps.setString(5,_publisher);
+            ps.setDouble(6, _price);
+            ps.setString(7,  _date_received);
+            ps.setString(8,_description);
+            ps.setBytes(9 , _cover);
+            ps.setInt(10, _id);
+          
+        }
+        else
+        {
+            upadteQuery = "UPDATE `books` SET \n" +"`name`= ? ,`author_id`=? ,`genre_id`=? ,`quantity`= ?,`publisher`= ? ,`price`= ?,`date_recevied`=?,`description`=? WHERE `id` = ?";
+            ps = DB.getConnection().prepareStatement(upadteQuery);
+            
+            //ps.setString(1,_isbn);
+            ps.setString(1,_name);
+            ps.setInt(2,_author_id);
+            ps.setInt(3,_genre_id);
+            ps.setInt(4,_quantity);
+            ps.setString(5,_publisher);
+            ps.setDouble(6, _price);
+            ps.setString(7,  _date_received);
+            ps.setString(8,_description);
+            //ps.setBytes(9 , _cover);
+            ps.setInt(9, _id);
+          
+        }
+        
+        
+            
+            
+            if(ps.executeUpdate() != 0)
+            {
+                JOptionPane.showMessageDialog(null, "Book Edited", "edit Book", 1);
+            }
+            else
+            {
+                JOptionPane.showMessageDialog(null, "Book Not Edited", "edit Book", 2);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Book.class.getName()).log(Level.SEVERE, null, ex);
+        }
+       
+    }
     
    public boolean isISBNexists(String _isbn)
    {
        String query = "SELECT * FROM `books` WHERE `isbn` = '"+_isbn+"'";
-       Func_Class func = new Func_Class();
+       
        ResultSet rs = func.getData(query);
        try {
            if (rs.next()) {
@@ -189,5 +251,28 @@ public Book(Integer _id,String _isbn,String _name,Integer _author_id,Integer _ge
        
        return true;
    }
-   
+   public Book searchBookbyId_Isbn(int _id, String _isbn)
+   {
+       String query = "SELECT * FROM `books` WHERE `id` =  "+_id+" or `isbn` = '"+_isbn+"'";
+       
+       
+       ResultSet rs = func.getData(query);
+       Book book = null;
+       try {
+           if (rs.next()) 
+           {
+               book = new Book(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getInt(4),   
+                            rs.getInt(5),rs.getInt(6),rs.getString(7), rs.getDouble(8),rs.getString(9),
+                       rs.getString(10), rs.getBytes(11));
+           }
+           else 
+           {
+               return null;
+           }
+       } catch (SQLException ex) {
+           Logger.getLogger(Book.class.getName()).log(Level.SEVERE, null, ex);
+       }
+       
+       return book;
+   }
 }
