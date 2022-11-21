@@ -81,7 +81,12 @@ public class LoginForm extends javax.swing.JFrame {
         jLabel4.setText("Username:");
 
         txt_usertype.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        txt_usertype.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        txt_usertype.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "admin", "user" }));
+        txt_usertype.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_usertypeActionPerformed(evt);
+            }
+        });
 
         txt_Login.setBackground(new java.awt.Color(248, 148, 6));
         txt_Login.setFont(new java.awt.Font("Verdana", 0, 24)); // NOI18N
@@ -227,6 +232,10 @@ public class LoginForm extends javax.swing.JFrame {
         }
         
     }//GEN-LAST:event_txt_LoginActionPerformed
+
+    private void txt_usertypeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_usertypeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_usertypeActionPerformed
 
     /**
      * @param args the command line arguments
