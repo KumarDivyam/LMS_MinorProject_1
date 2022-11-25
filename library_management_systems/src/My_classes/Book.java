@@ -251,6 +251,33 @@ public Book(Integer _id,String _isbn,String _name,Integer _author_id,Integer _ge
        
        return true;
    }
+   
+    public void removeBook(int _id)
+    {   
+        String editQuery = "DELETE FROM `books` WHERE `id` = ?";
+        
+        try {
+            PreparedStatement ps = DB.getConnection().prepareStatement(editQuery);
+            
+            
+            ps.setInt(1, _id);
+            
+            
+            if(ps.executeUpdate() != 0)
+            {
+                JOptionPane.showMessageDialog(null, "Book Deleted", "remove", 1);
+            }
+            else
+            {
+                JOptionPane.showMessageDialog(null, "Book Not Deleted", "remove", 2);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Book.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    
+}
+ 
+  
    public Book searchBookbyId_Isbn(int _id, String _isbn)
    {
        String query = "SELECT * FROM `books` WHERE `id` =  "+_id+" or `isbn` = '"+_isbn+"'";
