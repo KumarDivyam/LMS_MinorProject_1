@@ -9,6 +9,7 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Date;
 import java.sql.ResultSet;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -302,4 +303,54 @@ public Book(Integer _id,String _isbn,String _name,Integer _author_id,Integer _ge
        
        return book;
    }
+    public Book getBookById(Integer _id) throws SQLException
+ {
+     Func_Class func= new Func_Class();
+     String query="SELECT * FROM `books` WHERE `id`= "+_id;
+      ResultSet rs=func.getData(query);
+      if(rs.next())
+      {
+          
+          return new Book(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getInt(4),   
+                            rs.getInt(5),rs.getInt(6),rs.getString(7), rs.getDouble(8),rs.getString(9),
+                       rs.getString(10), rs.getBytes(11));
+          
+      }
+      else
+      {
+           
+          return null;
+          
+      }
+      
+ }
+   
+     public ArrayList<Book> booksList()
+        {
+            ArrayList<Book> bList= new ArrayList<>();
+            
+
+            
+            
+            try {
+             
+            ResultSet rs=func.getData("SELECT * FROM `books`");
+            Book book;
+             
+             while(rs.next())
+             {
+                 book = new Book(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getInt(4),   
+                            rs.getInt(5),rs.getInt(6),rs.getString(7), rs.getDouble(8),rs.getString(9),
+                       rs.getString(10), rs.getBytes(11));
+                 bList.add(book);
+             }
+          
+           
+        }
+            catch (SQLException ex) {
+            Logger.getLogger(Book.class.getName()).log(Level.SEVERE, null, ex);
+        }
+            return bList;
+            
+        }
 }
