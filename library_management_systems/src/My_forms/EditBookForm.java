@@ -121,7 +121,7 @@ public class EditBookForm extends javax.swing.JFrame {
         jLabel_FormTitle1.setFont(new java.awt.Font("Century Gothic", 1, 24)); // NOI18N
         jLabel_FormTitle1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel_FormTitle1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel_FormTitle1.setText("Search/Edit Book");
+        jLabel_FormTitle1.setText("Edit Book");
         jLabel_FormTitle1.setOpaque(true);
 
         jLabel_CloseFormMouseClicked.setBackground(new java.awt.Color(0, 51, 102));

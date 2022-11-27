@@ -7,6 +7,8 @@ import java.awt.Image;
 import java.io.File;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
+import java.sql.ResultSet;
+import java.sql.Statement;
 import java.sql.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -106,4 +108,26 @@ public class Func_Class {
             return rs;
          
      }
+
+     public int countData(String tableName)
+     {
+         int total  = 0;
+         ResultSet rs;
+         Statement st;
+         
+         try {
+             st = DB.getConnection().createStatement();
+             rs = st.executeQuery("SELECT COUNT(*) as total FROM `"+tableName+"` ");
+         if(rs.next())
+         {
+             total = rs.getInt("total");
+         }
+         
+         } catch (SQLException ex) {
+             Logger.getLogger(Func_Class.class.getName()).log(Level.SEVERE, null, ex);
+         }
+         
+         return total;
+     }
+
 }

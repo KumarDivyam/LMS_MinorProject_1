@@ -9,9 +9,11 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Date;
 import java.sql.ResultSet;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
 /**
@@ -325,7 +327,7 @@ public Book(Integer _id,String _isbn,String _name,Integer _author_id,Integer _ge
       
  }
    
-     public ArrayList<Book> booksList()
+     public ArrayList<Book> booksList(String query)
         {
             ArrayList<Book> bList= new ArrayList<>();
             
@@ -333,8 +335,13 @@ public Book(Integer _id,String _isbn,String _name,Integer _author_id,Integer _ge
             
             
             try {
+                if (query.equals("")) // if user enter empty string make thsi the default select
+                        {
+                             query = "SELECT * FROM `books`";
+                        } 
+
              
-            ResultSet rs=func.getData("SELECT * FROM `books`");
+            ResultSet rs=func.getData(query);
             Book book;
              
              while(rs.next())
@@ -353,4 +360,30 @@ public Book(Integer _id,String _isbn,String _name,Integer _author_id,Integer _ge
             return bList;
             
         }
+     
+     
+     //function to display latest book covers
+     public void displayBookCover(JLabel[] labels_tab)
+     {
+         ResultSet rs;
+         Statement st;
+         
+         try {
+             st = DB.getConnection().createStatement();
+             rs = st.executeQuery("SELECT `cover` FROM `books` LIMIT 4 ");
+             byte[] image;
+             int i = 0;
+        while(rs.next())
+         {
+             image = rs.getBytes("cover");
+             func.displayImage(labels_tab[i].getWidth(),labels_tab[i].getHeight(),image,name,labels_tab[i]);
+             i++;
+         }
+         
+         } catch (SQLException ex) {
+             Logger.getLogger(Book.class.getName()).log(Level.SEVERE, null, ex);
+         }
+         
+         
+     }
 }
