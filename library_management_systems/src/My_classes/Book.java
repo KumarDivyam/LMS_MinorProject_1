@@ -140,10 +140,9 @@ public Book(Integer _id,String _isbn,String _name,Integer _author_id,Integer _ge
     }
     Func_Class func = new Func_Class();
      //insert new Book Function
-   public void addBook(String _isbn,String _name,Integer _author_id,Integer _genre_id,Integer _quantity,String _publisher,double _price 
-        ,String _date_received ,String _description, byte[] _cover)
+   public void addBook(String _isbn,String _name,Integer _author_id,Integer _genre_id,Integer _quantity,String _publisher,double _price,String _date_received ,String _description, byte[] _cover)
     {   
-        String insertQuery = "INSERT INTO `books`(`isbn`, `name`, `author_id`, `genre_id`, `quantity`, `publisher`, `price`, `date_recevied`, `description`, `cover`) VALUES (?,?,?,?,?,?,?,?,?,?)";
+        String insertQuery = "INSERT INTO `books`(`isbn`, `name`, `author_id`, `genre_id`, `quantity`, `publisher`, `price`, `date_received`, `description`, `cover`) VALUES (?,?,?,?,?,?,?,?,?,?)";
         
         try {
             PreparedStatement ps = DB.getConnection().prepareStatement(insertQuery);
@@ -162,11 +161,11 @@ public Book(Integer _id,String _isbn,String _name,Integer _author_id,Integer _ge
             
             if(ps.executeUpdate() != 0)
             {
-                JOptionPane.showMessageDialog(null, "Book Added", "add member", 1);
+                JOptionPane.showMessageDialog(null, "Book Added", "add Book", 1);
             }
             else
             {
-                JOptionPane.showMessageDialog(null, "Book Not Added", "member", 2);
+                JOptionPane.showMessageDialog(null, "Book Not Added", "Book", 2);
             }
         } catch (SQLException ex) {
             Logger.getLogger(Book.class.getName()).log(Level.SEVERE, null, ex);
@@ -370,7 +369,7 @@ public Book(Integer _id,String _isbn,String _name,Integer _author_id,Integer _ge
          
          try {
              st = DB.getConnection().createStatement();
-             rs = st.executeQuery("SELECT `cover` FROM `books` LIMIT 4 ");
+             rs = st.executeQuery("SELECT `cover` FROM `books` order by id desc LIMIT 4 ");
              byte[] image;
              int i = 0;
         while(rs.next())

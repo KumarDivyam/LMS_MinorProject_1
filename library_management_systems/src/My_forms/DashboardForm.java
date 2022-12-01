@@ -6,15 +6,13 @@ package My_forms;
 
 import My_classes.Book;
 import My_classes.Func_Class;
-import java.sql.ResultSet;
+
 import java.awt.Color;
 import java.awt.Component;
 
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+
 import javax.swing.BorderFactory;
 
 import javax.swing.JButton;

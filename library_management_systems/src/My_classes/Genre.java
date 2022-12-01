@@ -9,6 +9,7 @@ package My_classes;
  * @author Divyam
  */
 import java.sql.*;
+import java.sql.PreparedStatement;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.logging.Level;
