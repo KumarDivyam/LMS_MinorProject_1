@@ -123,6 +123,36 @@ public void addIssue (int _book_id, int _member_id, String _status, String _issu
             Logger.getLogger(Issue_Book.class.getName()).log(Level.SEVERE, null, ex);
         }
 }
+
+//updating  Issue
+public void updateIssue (int _book_id, int _member_id, String _status,String _issue_date, String _return_date, String _note){
+     
+    String updateQuery = "UPDATE `issue_book` SET `status`= ?,`return_date`= ?,`note`= ?  WHERE `book_id` = ? AND `member_id` = ? AND `issue_date` = ?";
+    
+           try {
+            java.sql.PreparedStatement ps = DB.getConnection().prepareStatement(updateQuery);
+            
+            
+            ps.setString(1, _status);
+            ps.setString(2, _return_date);
+            ps.setString(3, _note);
+            ps.setInt(4, _book_id);
+            ps.setInt(5, _member_id);
+            ps.setString(6, _issue_date);
+            
+            if(ps.executeUpdate() != 0)
+            {
+                JOptionPane.showMessageDialog(null, "Status Updated", "Book Issue", 1);
+            }
+            else
+            {
+                JOptionPane.showMessageDialog(null, "Status Not Updated", "Book Issue", 2);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Issue_Book.class.getName()).log(Level.SEVERE, null, ex);
+        }
+}
+
 //function to check weather the book is available
 //how to do that?
 //get the book quantity from table books
@@ -212,7 +242,32 @@ public boolean checkBookAvailability(int _book_id)
         }
      
 
-
+    public void removeFromIssuedTable(int _book_id,int _member_id,String _issued_date)
+    {   
+        String editQuery = "DELETE FROM `issue_book` WHERE `book_id` = ? AND `member_id` = ? AND `issue_date`= ?";
+        
+        try {
+            PreparedStatement ps = DB.getConnection().prepareStatement(editQuery);
+            
+            
+            ps.setInt(1, _book_id);
+            ps.setInt(2, _member_id);
+            ps.setString(3, _issued_date);
+            
+            
+            if(ps.executeUpdate() != 0)
+            {
+                JOptionPane.showMessageDialog(null, "Deleted Sucessfully", "remove", 1);
+            }
+            else
+            {
+                JOptionPane.showMessageDialog(null, "Not Deleted", "remove", 2);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Issue_Book.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    
+}
 
 
 }

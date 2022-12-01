@@ -385,4 +385,37 @@ public Book(Integer _id,String _isbn,String _name,Integer _author_id,Integer _ge
          
          
      }
+
+public void setQuantity_Minus_One(int _book_id,int _quantity)
+{
+        String upadtequantityQuery = "";
+        PreparedStatement ps;
+        
+        try {
+        
+        
+            upadtequantityQuery = "UPDATE `books` SET `quantity` = ? WHERE `id` = ?";
+            ps = DB.getConnection().prepareStatement(upadtequantityQuery);
+            
+                    
+            ps.setInt(1,_quantity);
+
+            ps.setInt(2, _book_id);
+        
+        
+        if(ps.executeUpdate() != 0)
+            {
+                JOptionPane.showMessageDialog(null, "This book is set to lost -> the quanity = quantity -1", "Edit Book quantity", 1);
+            }
+            else
+            {
+                JOptionPane.showMessageDialog(null, "Book Quantity Not Edited", "edit Book Quantity", 2);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Book.class.getName()).log(Level.SEVERE, null, ex);
+        }
+}
+
+
+
 }
