@@ -201,7 +201,7 @@ public Book(Integer _id,String _isbn,String _name,Integer _author_id,Integer _ge
         }
         else
         {
-            upadteQuery = "UPDATE `books` SET \n" +"`name`= ? ,`author_id`=? ,`genre_id`=? ,`quantity`= ?,`publisher`= ? ,`price`= ?,`date_recevied`=?,`description`=? WHERE `id` = ?";
+            upadteQuery = "UPDATE `books` SET \n" +"`name`= ? ,`author_id`=? ,`genre_id`=? ,`quantity`= ?,`publisher`= ? ,`price`= ?,`date_received`=?,`description`=? WHERE `id` = ?";
             ps = DB.getConnection().prepareStatement(upadteQuery);
             
             //ps.setString(1,_isbn);
