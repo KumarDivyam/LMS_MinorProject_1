@@ -331,15 +331,15 @@ public class AddMemberForm extends javax.swing.JFrame {
         String gender = jComboBox_Gender.getSelectedItem().toString();
         
         
-        if (fname.isEmpty())
+        if (fname.trim().isEmpty())
         {
             jLabel_EmptyFirstName_.setVisible(true);
         }
-        else if (lname.isEmpty())
+        else if (lname.trim().isEmpty())
         {
             jLabel_EmptyLastName_.setVisible(true);
         }
-        else if (phone.isEmpty())
+        else if (phone.trim().isEmpty())
         {
             jLabel_EmptyPhone.setVisible(true);
         }

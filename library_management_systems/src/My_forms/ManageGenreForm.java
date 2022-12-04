@@ -252,7 +252,7 @@ public class ManageGenreForm extends javax.swing.JFrame {
     private void jButton_AddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_AddActionPerformed
         String name = jTextField_Name.getText();
         
-        if (name.isEmpty())
+        if (name.trim().isEmpty())
         {
             jLabel_EmptyName_.setVisible(true);
         }
@@ -270,7 +270,7 @@ public class ManageGenreForm extends javax.swing.JFrame {
         
         String name = jTextField_Name.getText();
         
-        if (name.isEmpty())
+        if (name.trim().isEmpty())
         {
             jLabel_EmptyName_.setVisible(true);
         }
@@ -299,7 +299,14 @@ public class ManageGenreForm extends javax.swing.JFrame {
         try
             {
                 int id = Integer.parseInt(jTextField_ID.getText());
+                
+                    //Confirmatiion
+             int confirm = JOptionPane.showConfirmDialog(null, "Are you sure You want to Delete this Genre","Confirmation Box",JOptionPane.YES_NO_OPTION);
+             if(confirm==JOptionPane.YES_OPTION)
+             {
                 genre.removeGenre(id);
+             }
+               
                 populateJtableWithGenres();
                 
                 //clear Text from text fields
