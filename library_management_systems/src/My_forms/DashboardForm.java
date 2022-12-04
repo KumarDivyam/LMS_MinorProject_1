@@ -160,6 +160,10 @@ public class DashboardForm extends javax.swing.JFrame {
         jButton_Edit_Button1 = new javax.swing.JButton();
         jButton_BookList = new javax.swing.JButton();
         jButton_DeleteBook = new javax.swing.JButton();
+        jLabel12 = new javax.swing.JLabel();
+        jButton_ReturnBook_ = new javax.swing.JButton();
+        jButton_IssueBook_ = new javax.swing.JButton();
+        jLabel6 = new javax.swing.JLabel();
         jPanel_1 = new javax.swing.JPanel();
         jPanel_header1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
@@ -185,6 +189,7 @@ public class DashboardForm extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
         jPanel_Menu.setBackground(new java.awt.Color(36, 37, 42));
+        jPanel_Menu.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
 
         jPanel_Header.setBackground(new java.awt.Color(1, 50, 67));
 
@@ -293,7 +298,7 @@ public class DashboardForm extends javax.swing.JFrame {
 
         jLabel11.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel11.setText("Books");
+        jLabel11.setText("Circulation");
 
         jButton_Add_Book.setBackground(new java.awt.Color(51, 51, 51));
         jButton_Add_Book.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -339,35 +344,73 @@ public class DashboardForm extends javax.swing.JFrame {
             }
         });
 
+        jLabel12.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        jLabel12.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel12.setText("Books");
+
+        jButton_ReturnBook_.setBackground(new java.awt.Color(51, 51, 51));
+        jButton_ReturnBook_.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jButton_ReturnBook_.setForeground(new java.awt.Color(255, 255, 255));
+        jButton_ReturnBook_.setText("Return");
+        jButton_ReturnBook_.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton_ReturnBook_.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_ReturnBook_ActionPerformed(evt);
+            }
+        });
+
+        jButton_IssueBook_.setBackground(new java.awt.Color(51, 51, 51));
+        jButton_IssueBook_.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jButton_IssueBook_.setForeground(new java.awt.Color(255, 255, 255));
+        jButton_IssueBook_.setText("Issue");
+        jButton_IssueBook_.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton_IssueBook_.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_IssueBook_ActionPerformed(evt);
+            }
+        });
+
+        jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel6.setText("I");
+
         javax.swing.GroupLayout jPanel_MenuLayout = new javax.swing.GroupLayout(jPanel_Menu);
         jPanel_Menu.setLayout(jPanel_MenuLayout);
         jPanel_MenuLayout.setHorizontalGroup(
             jPanel_MenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel_MenuLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel_Header, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                .addContainerGap())
-            .addGroup(jPanel_MenuLayout.createSequentialGroup()
-                .addGap(19, 19, 19)
                 .addGroup(jPanel_MenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel11)
-                    .addComponent(jLabel9)
-                    .addComponent(jLabel10)
-                    .addComponent(jLabel8))
-                .addContainerGap(154, Short.MAX_VALUE))
+                    .addGroup(jPanel_MenuLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jPanel_Header, javax.swing.GroupLayout.PREFERRED_SIZE, 268, Short.MAX_VALUE))
+                    .addGroup(jPanel_MenuLayout.createSequentialGroup()
+                        .addGap(19, 19, 19)
+                        .addGroup(jPanel_MenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel11)
+                            .addComponent(jLabel10)
+                            .addComponent(jLabel8)
+                            .addComponent(jLabel9)
+                            .addComponent(jLabel12)
+                            .addComponent(jButton_IssueBook_, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel6)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton_ReturnBook_, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel_MenuLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel_MenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jButton_Edit_Button1, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton_Member_List, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton_Add_Member, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton_Delete_Member, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton_DeleteBook, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton_BookList, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton_Edit_Button1, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton_Add_Book, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton_Member_List, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton_Manage_Authors, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton_Manage_Genres, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton_Add_Member, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton_Edit_Books, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton_Delete_Member, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jButton_Manage_Authors, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(39, 39, 39))
         );
         jPanel_MenuLayout.setVerticalGroup(
@@ -379,13 +422,13 @@ public class DashboardForm extends javax.swing.JFrame {
                 .addComponent(jLabel8)
                 .addGap(18, 18, 18)
                 .addComponent(jButton_Manage_Genres)
-                .addGap(66, 66, 66)
+                .addGap(18, 18, 18)
                 .addComponent(jLabel10)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addComponent(jButton_Manage_Authors)
-                .addGap(55, 55, 55)
-                .addComponent(jLabel9)
-                .addGap(14, 14, 14)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(jButton_Add_Member)
                 .addGap(18, 18, 18)
                 .addComponent(jButton_Edit_Button1)
@@ -394,8 +437,8 @@ public class DashboardForm extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButton_Member_List)
                 .addGap(18, 18, 18)
-                .addComponent(jLabel11)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel12)
+                .addGap(18, 18, 18)
                 .addComponent(jButton_Add_Book)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButton_Edit_Books)
@@ -403,6 +446,13 @@ public class DashboardForm extends javax.swing.JFrame {
                 .addComponent(jButton_DeleteBook)
                 .addGap(12, 12, 12)
                 .addComponent(jButton_BookList)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel11)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel_MenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton_IssueBook_)
+                    .addComponent(jButton_ReturnBook_)
+                    .addComponent(jLabel6))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -550,7 +600,7 @@ public class DashboardForm extends javax.swing.JFrame {
                 .addComponent(jPanel_header3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(38, 38, 38)
                 .addComponent(jLabel_AuhtorsCount, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 40, Short.MAX_VALUE))
+                .addContainerGap(40, Short.MAX_VALUE))
         );
 
         jPanel_4.setBackground(new java.awt.Color(0, 153, 255));
@@ -639,19 +689,19 @@ public class DashboardForm extends javax.swing.JFrame {
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(50, 50, 50)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jPanel_3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jPanel_1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jPanel_2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(44, 44, 44)
-                .addComponent(jPanel_4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(20, Short.MAX_VALUE))
-            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addComponent(jPanel_4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(20, 20, 20))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel_Menu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(20, 20, 20))
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -730,6 +780,16 @@ public class DashboardForm extends javax.swing.JFrame {
         dbf.setVisible(true);
     }//GEN-LAST:event_jButton_DeleteBookActionPerformed
 
+    private void jButton_ReturnBook_ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_ReturnBook_ActionPerformed
+     ReturnBookForm rblf=new ReturnBookForm();
+        rblf.setVisible(true);
+    }//GEN-LAST:event_jButton_ReturnBook_ActionPerformed
+
+    private void jButton_IssueBook_ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_IssueBook_ActionPerformed
+         IssueBookForm iblf=new IssueBookForm();
+        iblf.setVisible(true);
+    }//GEN-LAST:event_jButton_IssueBook_ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -773,16 +833,20 @@ public class DashboardForm extends javax.swing.JFrame {
     private javax.swing.JButton jButton_Delete_Member;
     private javax.swing.JButton jButton_Edit_Books;
     private javax.swing.JButton jButton_Edit_Button1;
+    private javax.swing.JButton jButton_IssueBook_;
     private javax.swing.JButton jButton_Manage_Authors;
     private javax.swing.JButton jButton_Manage_Genres;
     private javax.swing.JButton jButton_Member_List;
+    private javax.swing.JButton jButton_ReturnBook_;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JLabel jLabel_AuhtorsCount;

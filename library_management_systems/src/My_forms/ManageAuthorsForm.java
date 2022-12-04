@@ -325,11 +325,11 @@ public class ManageAuthorsForm extends javax.swing.JFrame {
         String about = jTextField_About.getText();
         
         
-        if (fname.isEmpty())
+        if (fname.trim().isEmpty())
         {
             jLabel_EmptyFirstName_.setVisible(true);
         }
-        else if (lname.isEmpty())
+        else if (lname.trim().isEmpty())
         {
             jLabel_EmptyLastName_.setVisible(true);
         }
@@ -386,7 +386,16 @@ public class ManageAuthorsForm extends javax.swing.JFrame {
         try
             {
                 int id = Integer.parseInt(jTextField_ID.getText());
-                author.removeAuthor(id);
+                
+                //Confirmation
+                int confirm = JOptionPane.showConfirmDialog(null, "Are you sure You want to Delete this Author","Confirmation Box",JOptionPane.YES_NO_OPTION);
+                if(confirm==JOptionPane.YES_OPTION)
+                {
+                 author.removeAuthor(id);
+                }
+             
+             
+
                 populateJtableWithAuthors();
                 
                 //clear Text from text fields

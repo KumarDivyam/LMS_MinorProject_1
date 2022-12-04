@@ -8,6 +8,7 @@ import java.util.logging.Logger;
 import java.sql.*;
 import javax.swing.JOptionPane;
 import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 /**
