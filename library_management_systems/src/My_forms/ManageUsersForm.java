@@ -457,6 +457,7 @@ public class ManageUsersForm extends javax.swing.JFrame {
             catch (SQLException ex) {
                 Logger.getLogger(ManageUsersForm.class.getName()).log(Level.SEVERE, null, ex);
             }
+            hideLabels();
         }
     }//GEN-LAST:event_jButton_Add_ActionPerformed
 
@@ -524,7 +525,8 @@ public class ManageUsersForm extends javax.swing.JFrame {
                 jPasswordField_1.setText("");
                 jPasswordField_2.setText("");
                 jCheckBox_SetAdmin.setSelected(false);
-                  
+                
+                hideLabels();
                   
                   
               }
@@ -564,7 +566,7 @@ public class ManageUsersForm extends javax.swing.JFrame {
                 jPasswordField_2.setText("");
                 jCheckBox_SetAdmin.setSelected(false);
                         
-                      
+                 hideLabels();     
             }
             catch(NumberFormatException ex)
             {
@@ -609,7 +611,13 @@ public class ManageUsersForm extends javax.swing.JFrame {
       
     }//GEN-LAST:event_jTable_Users_MouseClicked
 
-    
+    public void hideLabels()
+    {
+        jLabel_EmptyFirstName_.setForeground(Color.white);
+        jLabel_EmptyLastName_.setForeground(Color.white);
+        jLabel_EmptyPassword_.setForeground(Color.white);
+        jLabel_EmptyUserName_.setForeground(Color.white);
+    }
     // function to populate the jtable with users
     
     public void populateJtableWithUsers()

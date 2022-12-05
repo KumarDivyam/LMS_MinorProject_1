@@ -171,6 +171,12 @@ public class EdtMemberForm extends javax.swing.JFrame {
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel4.setText("Phone Number:");
 
+        jTextField_Phone.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextField_PhoneKeyTyped(evt);
+            }
+        });
+
         jLabel_EmptyPhone.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel_EmptyPhone.setForeground(new java.awt.Color(204, 0, 0));
         jLabel_EmptyPhone.setText("*Enter the Phone number");
@@ -300,7 +306,7 @@ public class EdtMemberForm extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel_FormTitle1, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel_CloseFormMouseClicked, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(jTextField_id, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -412,7 +418,7 @@ public class EdtMemberForm extends javax.swing.JFrame {
                    img = Files.readAllBytes(path);
                    member.editMember(id,fname,lname, phone,email, gender, img);
                } catch (IOException ex) {
-                   Logger.getLogger(EdtMemberForm.class.getName()).log(Level.SEVERE, null, ex);
+                   JOptionPane.showMessageDialog(null, "Make Sure to Enter the Member ID and Select a Profile Picture", "No ID or Pitcure Selected", 2);
                }
               
            }
@@ -508,6 +514,13 @@ public class EdtMemberForm extends javax.swing.JFrame {
         }
         
     }//GEN-LAST:event_jButton_SearchActionPerformed
+
+    private void jTextField_PhoneKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField_PhoneKeyTyped
+            if(!Character.isDigit(evt.getKeyChar()))  
+      {
+          evt.consume();
+      }
+    }//GEN-LAST:event_jTextField_PhoneKeyTyped
 
     /**
      * @param args the command line arguments

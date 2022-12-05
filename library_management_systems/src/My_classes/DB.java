@@ -19,8 +19,8 @@ public class DB {
       private static String servername="localhost";
     private static String username="root"; 
     private static String dbname="java_library_system";
-    private static Integer portNumber=3307;
-    private static String password="root@sql";
+    private static Integer portNumber=3306;
+    private static String password="";
     
     
     // create a function to create and return the connection
@@ -36,7 +36,7 @@ public class DB {
         
           try {
               connection=datasource.getConnection();
-          } catch (SQLException ex) {
+          }catch (SQLException ex) {
               Logger.getLogger(DB.class.getName()).log(Level.SEVERE, null, ex);
           }
         

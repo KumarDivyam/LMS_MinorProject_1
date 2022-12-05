@@ -319,6 +319,9 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="jTextField_Phone">
+          <Events>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jTextField_PhoneKeyTyped"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel_EmptyPhone">
           <Properties>

@@ -600,6 +600,13 @@ public class ReturnBookForm extends javax.swing.JFrame {
         String _issued_date = jTable_IssuedBookList.getValueAt(index, 3).toString();
         
         isb.removeFromIssuedTable(book_id, member_id, _issued_date);    
+        jSpinner_BookId.setValue(0);
+        jSpinner_MemberID.setValue(0);
+        jLabel_BookName.setText("Book Name");
+        jLabel_MemberFullName.setText("Member Full Name");
+        jDateChooser_IssueDate.setDate(new Date());
+        jDateChooser_Return_Date.setDate(new Date());
+        jTextArea_Note.setText("");
         }
         catch(Exception e)
         {

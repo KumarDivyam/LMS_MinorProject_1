@@ -339,7 +339,9 @@ public class ManageAuthorsForm extends javax.swing.JFrame {
             
             //refresh Jtable with genres
             
-           // populateJtableWithGenres();
+           populateJtableWithAuthors();
+           jLabel_EmptyLastName_.setVisible(false);
+           jLabel_EmptyFirstName_.setVisible(false);
         }
     }//GEN-LAST:event_jButton_AddActionPerformed
 
@@ -367,7 +369,9 @@ public class ManageAuthorsForm extends javax.swing.JFrame {
             {
                int id = Integer.parseInt(jTextField_ID.getText());
                 author.editAuthor(id,fname,lname,expertise,about); 
-               // populateJtableWithGenres();
+               populateJtableWithAuthors();
+                jLabel_EmptyLastName_.setVisible(false);
+                jLabel_EmptyFirstName_.setVisible(false);
                 
                 
             }
@@ -394,9 +398,11 @@ public class ManageAuthorsForm extends javax.swing.JFrame {
                  author.removeAuthor(id);
                 }
              
-             
-
                 populateJtableWithAuthors();
+                jLabel_EmptyLastName_.setVisible(false);
+                jLabel_EmptyFirstName_.setVisible(false);
+
+                
                 
                 //clear Text from text fields
                 jTextField_ID.setText("");

@@ -192,7 +192,7 @@ public class Users {
             
             try {
              
-            ResultSet rs=func.getData("SELECT * FROM `users_table`");
+            ResultSet rs=func.getData("SELECT * FROM `users_table` where user_type <> 'owner'");
             Users user;
              
              while(rs.next())
@@ -212,6 +212,27 @@ public class Users {
             
         }
     
+
+//function to allow the user to login
+     public Users tryLogin(String _username, String _password)
+     {
+          
+         ResultSet rs=func.getData("SELECT * FROM `users_table` WHERE `username` = '"+_username+"' AND `password` = '"+_password+"'");
+            Users user = null;
+             
+        try {
+            if (rs.next())
+            {   //`id`, `firstName`, `lastName`, `username`, `password`, `user_type`
+                user = new Users(rs.getInt("id"),rs.getString("firstname"),rs.getString("lastName"),rs.getString("username"),rs.getString("password"),rs.getString("user_type"));
+                
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Users.class.getName()).log(Level.SEVERE, null, ex);
+        }
+             return user;
+         
+     }
+
 }
 
 
